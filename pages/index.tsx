@@ -1,15 +1,33 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
+import Layout from '../components/Layout';
+import Link from 'next/link';
+import React from 'react';
 
-const IndexPage = () => (
-  <Layout title="Home | Next.js + TypeScript Example">
-    <h1>Hello Next.js 👋</h1>
-    <p>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </p>
-  </Layout>
-)
+import axios from 'axios'
 
-export default IndexPage
+const Index = (props) => (
+    <Layout>
+
+        <ul className="list-group">
+            {props.data.map(({show}) => (
+                <li className="list-group-item" key={show.id}>
+                    <Link as={`/p/${show.id}`} href={`/post?title=${show.title}`}>
+                        <a>{show.name}</a>
+                    </Link>
+                </li>
+            ))}
+        </ul>
+    </Layout>
+);
+
+Index.getInitialProps = async function() {
+    const res = await axios.get('https://api.tvmaze.com/search/shows?q=batman')
+    const data = await res.data;
+
+    console.log(`Show data fetched. Count: ${data.length}`);
+
+    return {
+        data: data
+    }
+};
+
+export default Index

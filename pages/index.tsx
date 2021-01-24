@@ -1,33 +1,28 @@
-import Layout from '../components/Layout';
-import Link from 'next/link';
-import React from 'react';
+import 'bootstrap/dist/css/bootstrap.css'
+import React from 'react'
+import {Navbar, NavLink, Nav } from "react-bootstrap";
 
-import axios from 'axios'
+const index = () => {
+    return (
+        <div>
+            <Navbar bg="primary" variant="dark">
+                <Navbar.Brand href="/">Logo</Navbar.Brand>
+                <Nav className={"mr-auto"}>
+                    <NavLink href={"/exchange"}>거래소</NavLink>
+                    <NavLink href={"/blances"}>입출금</NavLink>
+                    <NavLink href={"/exlog"}>거래내역</NavLink>
+                    <NavLink href={"/exauto"}>자동거래</NavLink>
+                </Nav>
+                <Nav>
+                <NavLink href="/Login">로그인</NavLink>
+                <NavLink href="/Join">회원가입</NavLink>
+                </Nav>
+            </Navbar>
+        </div>
 
-const Index = (props) => (
-    <Layout>
+    )
+}
 
-        <ul className="list-group">
-            {props.data.map(({show}) => (
-                <li className="list-group-item" key={show.id}>
-                    <Link as={`/p/${show.id}`} href={`/post?title=${show.title}`}>
-                        <a>{show.name}</a>
-                    </Link>
-                </li>
-            ))}
-        </ul>
-    </Layout>
-);
 
-Index.getInitialProps = async function() {
-    const res = await axios.get('https://api.tvmaze.com/search/shows?q=batman')
-    const data = await res.data;
 
-    console.log(`Show data fetched. Count: ${data.length}`);
-
-    return {
-        data: data
-    }
-};
-
-export default Index
+export default index

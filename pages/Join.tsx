@@ -1,79 +1,103 @@
-//import Layout from '../components/Layout'
 import 'bootstrap/dist/css/bootstrap.css'
 import React from 'react';
-import Layout from "../components/Layout";
+
 import {CSSProperties} from "react";
+// import {useRouter} from 'next/router'
+import {FormControl, InputGroup, Navbar, Button} from "react-bootstrap";
 
-
-const mystyle: CSSProperties = {
-    paddingTop: "20px",
-}
-const mystyle1: CSSProperties = {
-    textAlign: "center",
-}
-
-
-const LoginPage = () => (
-    <Layout title="Login">
-    <body>
-    <nav className="navbar navbar-default">
-      <div className="navbar-header">
-        <button type="button" className="navbar-toggle collapsed"
-                data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                aria-expanded="false">
-          <span className="icon-bar"></span>
-          <span className="icon-bar"></span>
-          <span className="icon-bar"></span>
-        </button>
-          <link className="navbar-brand" href="/"><a>자동거래 사이트</a></link>
-      </div>
-        <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul className="nav navbar-nav">
-                <li><link href="/" /><a>메인</a></li>
-                <li><link href="Login"/><a>로그인</a></li>
-            </ul>
-            <ul className="nav navbar-nav navbar-right">
-                <li className="dropdown">
-                    <a href="#" className="dropdown-toggle"
-                       data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false"> 접속하기 <span className="caret"> </span></a>
-                    <ul className="dropdown-menu">
-                        <li className="active"><a href="login">로그인</a> </li>
-                        <li> <a href="join">회원가입</a> </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div className="container">
-        <div className="col-lg-4"/>
-        <div className="col-lg-4">
-            <div className="jumbotron" style={mystyle}>
-                <form method="post" action="loginAction">
-                    <h3 style={mystyle1}> 로그인 화면 </h3>
-                    <div className="form-group">
-                       <input type="text" className="form-control" placeholder="아이디" name="userID" maxLength={20} />
-                    </div>
-                    <div className="form-group">
-                        <input type="password" className="form-control" placeholder="비밀번호" name="uerPassword" maxLength={20}/>
-                    </div>
-                    <div className="form-group">
-                        <input type="text" className="form-control" placeholder="이름" name="uerPassword" maxLength={20}/>
-                    </div>
-                    <div className="form-group">
-                        <input type="text" className="form-control" placeholder="Email" name="uerPassword" maxLength={20}/>
-                    </div>
-                    <div className="form-group">
-                        <input type="text" className="form-control" placeholder="Phone" name="uerPassword" maxLength={20}/>
-                    </div>
-                    <input type="submit" className="btn btn-primary form-control" value="로그인"/>
+const Join = () => {
+    // const router = useRouter()
+    return(
+        <div style={titleStyles}>
+            <Navbar className={"hg-light justify-content-between"} >
+                <form>
+                    <Navbar bg="blue" variant="light">
+                        <Navbar.Brand href="/"><h1>Logo</h1></Navbar.Brand>
+                        <Navbar.Toggle />
+                    </Navbar>
+                    <br />
+                    <InputGroup>
+                        <InputGroup.Prepend>
+                            <InputGroup.Text id="basic-addon1">ID</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <FormControl
+                            placeholder="Username"
+                            aria-label="Username"
+                            aria-describedby="basic-addon1"
+                        />
+                    </InputGroup>
+                    <br />
+                    <InputGroup>
+                        <InputGroup.Prepend>
+                            <InputGroup.Text id="basic-addon1">PW</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <FormControl
+                            placeholder="Password"
+                            aria-label="Password"
+                            aria-describedby="basic-addon1"
+                        />
+                    </InputGroup>
+                    <br />
+                    <InputGroup>
+                        <InputGroup.Prepend>
+                            <InputGroup.Text id="basic-addon1">닉네임</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <FormControl
+                            placeholder="name"
+                            aria-label="name"
+                            aria-describedby="basic-addon1"
+                        />
+                    </InputGroup>
+                    <br />
+                    <InputGroup>
+                        <InputGroup.Prepend>
+                            <InputGroup.Text id="basic-addon1">Email</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <FormControl
+                            placeholder="Email"
+                            aria-label="Email"
+                            aria-describedby="basic-addon1"
+                        />
+                    </InputGroup>
+                    <br />
+                    <InputGroup>
+                        <InputGroup.Prepend>
+                            <InputGroup.Text id="basic-addon1">Phone</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <FormControl
+                            placeholder="Phone"
+                            aria-label="Phone"
+                            aria-describedby="basic-addon1"
+                        />
+                    </InputGroup>
+                    <br />
+                    <InputGroup>
+                        <InputGroup.Prepend>
+                            <InputGroup.Text id="basic-addon1">계좌</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <FormControl
+                            placeholder="bank"
+                            aria-label="bank"
+                            aria-describedby="basic-addon1"
+                        />
+                    </InputGroup>
+                    <br />
+                    <Button type="submit">가입하기</Button>
                 </form>
-            </div>
+
+            </Navbar>
         </div>
-    </div>
-    </body>
-    </Layout>
-)
+    )
+}
+
+const titleStyles:CSSProperties = {
+    display: "flex",
+    alignItems: "center",
+    width: "900",
+    height: "98",
+    justifyContent: "center",
+
+}
 
 
-export default LoginPage
+export default Join

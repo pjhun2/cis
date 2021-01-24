@@ -1,22 +1,17 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import React from 'react';
-
-import {CSSProperties, Component } from "react";
+import Layout from "../components/Layout";
+import {CSSProperties} from "react";
 // import {useRouter} from 'next/router'
 import {FormControl, InputGroup, Navbar, Button} from "react-bootstrap";
 
 const LoginPage = () => {
     // const router = useRouter()
     return(
-        <div>
+        <Layout>
+            <div style={titleStyles}>
             <Navbar className={"hg-light justify-content-between"} >
                 <form>
-                    <div style={LogoStyle}>
-                    <Navbar bg="blue" variant="light">
-                        <Navbar.Brand href="/"><h1>Logo</h1></Navbar.Brand>
-                        <Navbar.Toggle />
-                    </Navbar>
-                    </div>
                     <InputGroup>
                     <InputGroup.Prepend>
                         <InputGroup.Text id="basic-addon1">ID</InputGroup.Text>
@@ -39,36 +34,25 @@ const LoginPage = () => {
                         />
                     </InputGroup>
                     <br />
-                    <div style={SubmitStyle}>
-                    <Button type="submit">로그인</Button>
-                    </div>
-                    </form>
+                    <Button type="submit">Submit</Button>
+                 </form>
+
             </Navbar>
             </div>
-     )
+            {/*<div onClick={() => router.push('/')} style={titleStyles}>*/}
+            {/*    홈*/}
+            {/*</div>*/}
+        </Layout>
+    )
 }
 
-//const titleStyles:CSSProperties = {
-//    display: "flex",
-//    alignItems: "center",
-//    width: "1000px",
-//    justifyContent: "center",
-//}
-
-const SubmitStyle:CSSProperties = {
+const titleStyles:CSSProperties = {
     display: "flex",
     alignItems: "center",
     width: "1000px",
     justifyContent: "center",
+
 }
-
-const LogoStyle:CSSProperties = {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-}
-
-
 
 
 export default LoginPage

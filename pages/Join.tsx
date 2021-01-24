@@ -8,9 +8,9 @@ import {FormControl, InputGroup, Navbar, Button} from "react-bootstrap";
 const Join = () => {
     // const router = useRouter()
     return(
-        <div style={titleStyles}>
+
             <Navbar className={"hg-light justify-content-between"} >
-                <form>
+                <div style={SubmitStyle}>
                     <Navbar bg="blue" variant="light">
                         <Navbar.Brand href="/"><h1>Logo</h1></Navbar.Brand>
                         <Navbar.Toggle />
@@ -25,6 +25,9 @@ const Join = () => {
                             aria-label="Username"
                             aria-describedby="basic-addon1"
                         />
+                        <InputGroup.Append>
+                            <Button variant="outline-secondary">중복확인</Button>
+                        </InputGroup.Append>
                     </InputGroup>
                     <br />
                     <InputGroup>
@@ -49,55 +52,19 @@ const Join = () => {
                         />
                     </InputGroup>
                     <br />
-                    <InputGroup>
-                        <InputGroup.Prepend>
-                            <InputGroup.Text id="basic-addon1">Email</InputGroup.Text>
-                        </InputGroup.Prepend>
-                        <FormControl
-                            placeholder="Email"
-                            aria-label="Email"
-                            aria-describedby="basic-addon1"
-                        />
-                    </InputGroup>
-                    <br />
-                    <InputGroup>
-                        <InputGroup.Prepend>
-                            <InputGroup.Text id="basic-addon1">Phone</InputGroup.Text>
-                        </InputGroup.Prepend>
-                        <FormControl
-                            placeholder="Phone"
-                            aria-label="Phone"
-                            aria-describedby="basic-addon1"
-                        />
-                    </InputGroup>
-                    <br />
-                    <InputGroup>
-                        <InputGroup.Prepend>
-                            <InputGroup.Text id="basic-addon1">계좌</InputGroup.Text>
-                        </InputGroup.Prepend>
-                        <FormControl
-                            placeholder="bank"
-                            aria-label="bank"
-                            aria-describedby="basic-addon1"
-                        />
-                    </InputGroup>
-                    <br />
-                    <Button type="submit">가입하기</Button>
-                </form>
-
+                    <Button type="submit">완료</Button>
+                </div>
             </Navbar>
-        </div>
+
     )
 }
-
-const titleStyles:CSSProperties = {
-    display: "flex",
+const SubmitStyle:CSSProperties = {
+    display: "grid",
     alignItems: "center",
-    width: "900",
-    height: "98",
     justifyContent: "center",
-
+    width: "100%",
 }
+
 
 
 export default Join

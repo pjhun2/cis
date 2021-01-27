@@ -16,13 +16,13 @@ const Join = () => {
                         <Navbar.Toggle />
                     </Navbar>
                     <br />
-                    <InputGroup>
+                    <InputGroup style={InputStyles}>
                         <InputGroup.Prepend>
-                            <InputGroup.Text id="basic-addon1">ID</InputGroup.Text>
+                            <InputGroup.Text id="basic-addon1">Email</InputGroup.Text>
                         </InputGroup.Prepend>
                         <FormControl
-                            placeholder="Username"
-                            aria-label="Username"
+                            placeholder="Email"
+                            aria-label="Email"
                             aria-describedby="basic-addon1"
                         />
                         <InputGroup.Append>
@@ -53,6 +53,10 @@ const Join = () => {
                     </InputGroup>
                     <br />
                     <Button type="submit">완료</Button>
+                    <br/>
+                    <p className="forgot-password text-right">
+                        이미 가입한 계정이 있으신가요? <a href="./Login">로그인</a>
+                    </p>
                 </div>
             </Navbar>
 
@@ -65,6 +69,8 @@ const SubmitStyle:CSSProperties = {
     width: "100%",
 }
 
-
+const InputStyles:CSSProperties = {
+    width: "600px",
+}
 
 export default Join

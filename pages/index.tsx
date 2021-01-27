@@ -1,10 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import React, {CSSProperties} from 'react'
-import {Navbar, NavLink, Nav } from "react-bootstrap";
+import {Navbar, NavLink, Nav, Carousel} from "react-bootstrap";
 
 
 const index = () => {
     return (
+
         <div style={HeaderStyles}>
             <Navbar bg="primary" variant="dark">
                 <Navbar.Brand href="/">Logo</Navbar.Brand>
@@ -64,8 +65,8 @@ const index = () => {
                     </Nav.Item>
                 </Nav>
             </div>
-        </div>
 
+        </div>
     )
 }
 

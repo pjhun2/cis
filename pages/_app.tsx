@@ -8,6 +8,9 @@ const globalStyles = `
     padding: 0;
 }
 `
+
+
+
 export default function MainApp ({Component, pageProps} : AppProps) {
     return (
         <>

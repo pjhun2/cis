@@ -15,20 +15,21 @@ function AlertDismissible() {
                         <Navbar.Brand href="/"><h1>Logo</h1></Navbar.Brand>
                         <Navbar.Toggle/>
                     </Navbar>
+                    <div style={divStyles}>
                     <br/>
                     <InputGroup style={InputStyles}>
                         <FormControl
-                            placeholder="name"
-                            aria-label="name"
+                            placeholder="이메일"
+                            aria-label="이메일"
                             aria-describedby="basic-addon1"
                         />
                     </InputGroup>
-                    <br />
                     <Alert show={show} style={AlertStyles} >
-                            <Button className="text-right" onClick={() => setShow(false)} >
+                            <Button style={ButtonStyles} className="text-center" onClick={() => setShow(false)} >
                                 인증번호 전송
                             </Button>
                     </Alert>
+                        <br />
                     {!show && <InputGroup style={AuthStyles}>
                         <FormControl
                             placeholder="인증번호 입력"
@@ -40,15 +41,7 @@ function AlertDismissible() {
                         </InputGroup.Append>
                     <br />
                     </InputGroup> }
-                    <br />
-                    <InputGroup style={InputStyles}>
-                        <FormControl
-                            placeholder="Email"
-                            aria-label="Email"
-                            aria-describedby="basic-addon1"
-                        />
-                    </InputGroup>
-                    <br/>
+                     <br/>
                     <InputGroup style={InputStyles}>
                         <FormControl
                             placeholder="Password"
@@ -63,16 +56,25 @@ function AlertDismissible() {
                             aria-label="Confirm Password"
                             aria-describedby="basic-addon1"
                         />
-                    </InputGroup>
-                    <br />
-                     {<Button>가입하기</Button>}
 
-                    <br/>
+                    </InputGroup>
+                        <br />
+                        <InputGroup style={InputStyles}>
+                            <FormControl
+                                placeholder="이름"
+                                aria-label="이름"
+                                aria-describedby="basic-addon1"
+                            />
+                        </InputGroup>
+                        <br />
+                   <Button style={SubmitStyle}>가입하기</Button>
+                    <br />
                     <p className="forgot-password text-right">
                         이미 가입한 계정이 있으신가요? <a href="Login">로그인</a>
                     </p>
 
 
+                </div>
                 </div>
             </Navbar>
 
@@ -91,6 +93,8 @@ const SubmitStyle:CSSProperties = {
 
 const InputStyles:CSSProperties = {
     width: "400px",
+    height: "42px",
+    flex: "1 1 auto",
 }
 
 const AuthStyles:CSSProperties = {
@@ -107,11 +111,27 @@ const AlertStyles:CSSProperties = {
     justifyContent: "right",
     margin: "0px",
     padding: "0px",
-    backgroundColor: "white",
-    color: "black",
 }
 
+const ButtonStyles:CSSProperties = {
+    backgroundColor: "white",
+    color: "black",
+    width: "110px",
+    height: "35px",
+    borderRadius: "25px",
+    border: "0.5px solid #b3b3b3",
+    fontSize: "12px",
+    marginTop: "10px",
+}
 
+const divStyles:CSSProperties = {
+    position: "relative",
+    border: "1px solid #e5e5e5",
+    margin: "40px auto",
+    padding: "58px 69px 110px",
+    borderRadius: "2px",
+    boxSizing: "border-box",
+}
 
 export default AlertDismissible;
 

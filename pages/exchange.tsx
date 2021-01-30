@@ -1,58 +1,75 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import React from 'react';
-import Layout from "../components/Layout";
-import {CSSProperties} from "react";
-// import {useRouter} from 'next/router'
-import {FormControl, InputGroup, Navbar, Button} from "react-bootstrap";
+import data from "ra-core/src/reducer/admin/resource/data";
 
-const LoginPage = () => {
-    // const router = useRouter()
+interface IProps {
+    data: string[]
+}
+
+interface ISeries {
+    data: string
+}
+
+const ApexChart: React.FunctionComponent<IProps> = ({data}) => {
+    const [series, setSeries] = React.useState<ISeries[]>([{
+        data: data.slice()
+    }])
+    const [options, setOptions] = React.useState<any>({
+        chart: {
+            id: 'realtime',
+            height: 350,
+            type: 'line',
+            animations: {
+                enabled: true,
+                easing: 'linear',
+                dynamicAnimation: {
+                    speed: 1000
+                }
+            },
+            toolbar: {
+                show: false
+            },
+            zoom: {
+                enabled: false
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            curve: 'smooth'
+        },
+        title: {
+            text: 'Dynamic Updating Chart',
+            align: 'left'
+        },
+        markers: {
+            size: 0
+        },
+        xaxis: {
+            type: 'datetime',
+        },
+        yaxis: {
+            max: 100
+        },
+        legend: {
+            show: false
+        },
+    },)
+
+    React.useEffect(() => {
+        setInterval(() => {
+            getNewSeries(lastDate, {
+                min: 10,
+                max: 90
+            })
+        }, 1000)
+    }, [])
     return(
-        <Layout>
-            <div style={titleStyles}>
-            <Navbar className={"hg-light justify-content-between"} >
-                <form>
-                    <InputGroup>
-                    <InputGroup.Prepend>
-                        <InputGroup.Text id="basic-addon1">ID</InputGroup.Text>
-                    </InputGroup.Prepend>
-                        <FormControl
-                            placeholder="Username"
-                            aria-label="Username"
-                            aria-describedby="basic-addon1"
-                        />
-                    </InputGroup>
-                    <br />
-                    <InputGroup>
-                        <InputGroup.Prepend>
-                            <InputGroup.Text id="basic-addon1">PW</InputGroup.Text>
-                        </InputGroup.Prepend>
-                        <FormControl
-                            placeholder="Password"
-                            aria-label="Password"
-                            aria-describedby="basic-addon1"
-                        />
-                    </InputGroup>
-                    <br />
-                    <Button type="submit">Submit</Button>
-                 </form>
-
-            </Navbar>
-            </div>
-            {/*<div onClick={() => router.push('/')} style={titleStyles}>*/}
-            {/*    홈*/}
-            {/*</div>*/}
-        </Layout>
+        <div id="chart">
+            <ReactApexChart options={this.state.options} series={this.state.series} type="line" height={350}/>
+        </div>
     )
 }
 
-const titleStyles:CSSProperties = {
-    display: "flex",
-    alignItems: "center",
-    width: "1000px",
-    justifyContent: "center",
-
-}
-
-
-export default LoginPage
+export default ApexChart

@@ -1,67 +1,65 @@
 import React, { Component } from 'react';
-import { GoogleLogin } from 'react-google-login';
-import KakaoLogin from 'react-kakao-login';
 import styled from 'styled-components';
+import { StyledText } from './style';
+import KaKaoLogin from 'react-kakao-login';
 
-class Login extends Component {
+interface State {
+    data: any;
+}
 
+class KakaoSignUp extends Component<any, State> {
     constructor(props: any) {
         super(props);
         this.state = {
-            id: '',
-            name: '',
-            provider: '',
+            data: 'kakao'
         }
     }
-    // Google Login
-    responseGoogle = (res: any) => {
+
+    responseKaKao = (res: any) => {
         this.setState({
-            id: res.googleId,
-            name: res.profileObj.name,
-            provider: 'google'
-        });
-    }
-    // Kakao Login
-    responseKakao = (res: any) => {
-        this.setState({
-            id: res.profile.id,
-            name: res.profile.properties.nickname,
-            provider: 'kakao'
+            data: res
         })
+        alert(JSON.stringify(this.state.data))
     }
 
-    // Login Fail
-    responseFail = (err: any) => {
-        console.error(err);
+    responseFail = (err:any) => {
+        alert(err);
     }
 
     render() {
         return (
-            <Container>
-                <GoogleLogin
-                    clientId={process.env.REACT_APP_Google}
-                    buttonText={"Google"}
-                    onSuccess={this.responseGoogle}
-                    onFailure={this.responseFail}
-                />
-                <KakaoButton
-                    key={process.env.REACT_APP_Kakao}
-                    buttonText={"Kakao"}
-                    onSuccess={this.responseKakao}
-                    onFailure={this.responseFail}
-                    getProfile="true"
-                />
-            </Container>
+            <>
+                <StyledText>
+                    <h1>카카오톡 간편 로그인</h1>
+                    <h4>로그인 후 더 많은 혜택을 누리세요!</h4>
+                    {/* <StKaKaoLogin>
+                        <img src={img} alt="a" onClick={this.loginWithKakao} />
+                    </StKaKaoLogin> */}
+                    <br />
+                    <KaKaoBtn
+                        jsKey={'ae4913429db06ec54d7cfc44042d3bd3'}
+                        buttonText="KaKao"
+                        onSuccess={this.responseKaKao}
+                        onFailure={this.responseFail}
+                        getProfile={true}
+                    />
+
+                </StyledText>
+
+            </>
         );
     }
 }
+const StKaKaoLogin = styled.div`
+    cursor: pointer;
+    /* border-radius:10px; */
+    /* width: 200px; */
+    /* &:hover{
+        box-shadow: 0 0px 0px 0 rgba(0, 0, 0, 0.2), 0 0px 20px 0 rgba(0, 0, 0, 0.19);
+    } */
+`;
 
-const Container = styled.div`
-    display: flex;
-    flex-flow: column wrap;
-`
-
-const KakaoButton = styled(KakaoLogin)`
+const KaKaoBtn = styled(KaKaoLogin)`
     padding: 0;
     width: 190px;
     height: 44px;
@@ -73,6 +71,10 @@ const KakaoButton = styled(KakaoLogin)`
     font-size: 16px;
     font-weight: bold;
     text-align: center;
+    cursor: pointer;
+    &:hover{
+        box-shadow: 0 0px 15px 0 rgba(0, 0, 0, 0.2)
+    }
 `
 
-export default Login;
+export default KakaoSignUp;

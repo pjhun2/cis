@@ -3,6 +3,7 @@ import React from 'react';
 import {CSSProperties } from "react";
 import {FormControl, InputGroup, Navbar, Button } from "react-bootstrap";
 
+
 const LoginPage = () => {
     // const router = useRouter()
     return (
